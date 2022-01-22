@@ -1,0 +1,16 @@
+{
+  "name": "testing-apis-with-cypress",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^9.3.1"
+  },
+  "devDependencies": {},
+  "description": ""
+}
