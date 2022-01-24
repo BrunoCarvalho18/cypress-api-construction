@@ -1,11 +1,16 @@
-describe("Search a book", () => {
+describe("It should use all the verbs in a book api", () => {
   let id = 1;
   let idDel = 2;
   let bookDetails;
+  let bookDetailsUpdate;
 
   beforeEach(() => {
     cy.fixture("book").then((book)=>{
        bookDetails = book;
+    });
+
+    cy.fixture("bookUpdate").then(bookUpdate => {
+      bookDetailsUpdate = bookUpdate;
     });
 
   }); 
@@ -20,6 +25,19 @@ describe("Search a book", () => {
 
   it("delete a book - DELETE", () => {
     cy.request("DELETE", `/posts/${idDel}`).as("response");
+    cy.get("@response").then((res) => {
+      console.log("response", res);
+      expect(res.status).to.be.equal(200);
+    });
+  });
+
+  it("update a book - PUT", () => {
+    cy.request("PUT", `/posts/${bookDetailsUpdate.userId}`, {
+      userId: bookDetailsUpdate.userId,
+      id: bookDetailsUpdate.id,
+      title: bookDetailsUpdate.title,
+      body: bookDetailsUpdate.body,
+    }).as("response");
     cy.get("@response").then((res) => {
       console.log("response", res);
       expect(res.status).to.be.equal(200);
