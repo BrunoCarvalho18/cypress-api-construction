@@ -1,5 +1,3 @@
-const { it } = require("mocha");
-
 describe("Search a book", () => {
   let id = 1;
 
