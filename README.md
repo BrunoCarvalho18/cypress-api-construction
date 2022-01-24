@@ -2,6 +2,6 @@
   About Automation 🚀 
 </h1>
 
-## :star: **Execute the tests**
+## :octocat: **Execute the tests**
 
 - npm run cypress:run
