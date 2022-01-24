@@ -1,5 +1,6 @@
 describe("Search a book", () => {
   let id = 1;
+  let idDel = 2;
   let bookDetails;
 
   beforeEach(() => {
@@ -11,6 +12,14 @@ describe("Search a book", () => {
 
   it("search a book - GET", () => {
     cy.request("GET", `/posts/${id}`).as("response");
+    cy.get("@response").then((res) => {
+      console.log("response", res);
+      expect(res.status).to.be.equal(200);
+    });
+  });
+
+  it("delete a book - DELETE", () => {
+    cy.request("DELETE", `/posts/${idDel}`).as("response");
     cy.get("@response").then((res) => {
       console.log("response", res);
       expect(res.status).to.be.equal(200);
