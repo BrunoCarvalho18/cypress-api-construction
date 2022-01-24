@@ -20,6 +20,7 @@ describe("It should use all the verbs in a book api", () => {
     cy.get("@response").then((res) => {
       console.log("response", res);
       expect(res.status).to.be.equal(200);
+      cy.log('search a book')
     });
   });
 
@@ -28,6 +29,7 @@ describe("It should use all the verbs in a book api", () => {
     cy.get("@response").then((res) => {
       console.log("response", res);
       expect(res.status).to.be.equal(200);
+      cy.log('delete a book')
     });
   });
 
@@ -40,7 +42,8 @@ describe("It should use all the verbs in a book api", () => {
     }).as("response");
     cy.get("@response").then((res) => {
       console.log("response", res);
-      expect(res.status).to.be.equal(200);
+      expect(res.status).to.be.equal(200);  
+      cy.log('update a book')
     });
   });
 
@@ -54,6 +57,7 @@ describe("It should use all the verbs in a book api", () => {
     cy.get("@response").then((res) => {
       console.log("response", res);
       expect(res.status).to.be.equal(201);
+      cy.log('created a new book')
     });
   });
 });
