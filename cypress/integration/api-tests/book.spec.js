@@ -1,7 +1,13 @@
-const { it } = require("mocha");
-
 describe("Search a book", () => {
   let id = 1;
+  let bookDetails;
+
+  beforeEach(() => {
+    cy.fixture("book").then((book)=>{
+       bookDetails = book;
+    });
+
+  }); 
 
   it("search a book - GET", () => {
     cy.request("GET", `/posts/${id}`).as("response");
@@ -13,10 +19,10 @@ describe("Search a book", () => {
 
   it("create a book - POST", () => {
     cy.request("POST", "/posts", {
-      userId: 1,
-      id: 1,
-      title: "teste",
-      body: "teste",
+      userId: bookDetails.userId,
+      id: bookDetails.id,
+      title: bookDetails.title,
+      body: bookDetails.body,
     }).as("response");
     cy.get("@response").then((res) => {
       console.log("response", res);
