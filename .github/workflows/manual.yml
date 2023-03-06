@@ -13,4 +13,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
+          node-version: 16
           start: npm run cypress:run --config video=false
